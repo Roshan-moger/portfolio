@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import MatrixRain from '@/components/cyberpunk/MatrixRain';
-import CyberCursor from '@/components/cyberpunk/CyberCursor';
-import CyberNav from '@/components/cyberpunk/CyberNav';
-import CyberHero from '@/components/cyberpunk/CyberHero';
-import CyberAbout from '@/components/cyberpunk/CyberAbout';
-import CyberSkills from '@/components/cyberpunk/CyberSkills';
-import CyberProjects from '@/components/cyberpunk/CyberProjects';
-import CyberExperience from '@/components/cyberpunk/CyberExperience';
-import CyberContact from '@/components/cyberpunk/CyberContact';
-import CyberFooter from '@/components/cyberpunk/CyberFooter';
 import CyberLoader from '@/components/cyberpunk/CyberLoader';
+import ParticleField from '@/components/ParticleField';
+import CyberNav from '@/components/cyberpunk/CyberNav';
+import AboutSection from '@/components/AboutSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import ExperienceSection from '@/components/ExperienceSection';
+import CyberContact from '@/components/cyberpunk/CyberContact';
+import CyberSkills from '@/components/cyberpunk/CyberSkills';
+import CustomCursor from '@/components/CustomCursor';
+import HeroSection from '@/components/HeroSection';
+import Footer from '@/components/Footer';
+
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,26 +39,26 @@ const Index = () => {
       className="relative overflow-hidden"
     >
       {/* Background Effects */}
-      <MatrixRain />
+      <ParticleField />
       <div className="scanlines" />
       
       {/* Custom Cursor */}
-      <CyberCursor />
+      <CustomCursor />
       
       {/* Navigation */}
       <CyberNav isDark={isDark} toggleTheme={toggleTheme} />
       
       {/* Main Content */}
       <main className="relative z-10">
-        <CyberHero />
-        <CyberAbout />
+        <HeroSection />
+        <AboutSection />
         <CyberSkills />
-        <CyberProjects />
-        <CyberExperience />
+        <ProjectsSection />
+        <ExperienceSection />
         <CyberContact />
       </main>
       
-      <CyberFooter />
+      <Footer />
     </motion.div>
   );
 };

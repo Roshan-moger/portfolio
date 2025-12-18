@@ -11,6 +11,7 @@ import CyberSkills from '@/components/cyberpunk/CyberSkills';
 import CustomCursor from '@/components/CustomCursor';
 import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
+import Navigation from '@/components/Navigation';
 
 
 const Index = () => {
@@ -46,7 +47,7 @@ const Index = () => {
       <CustomCursor />
       
       {/* Navigation */}
-      <CyberNav isDark={isDark} toggleTheme={toggleTheme} />
+      <Navigation isDark={isDark} toggleTheme={toggleTheme} />
       
       {/* Main Content */}
       <main className="relative z-10">

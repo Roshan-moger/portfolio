@@ -1,13 +1,60 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import CustomCursor from '@/components/CustomCursor';
+import ParticleField from '@/components/ParticleField';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import SkillsSection from '@/components/SkillsSection';
+import ExperienceSection from '@/components/ExperienceSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import LoadingScreen from '@/components/LoadingScreen';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    // Set initial theme
+    if (isDark) {
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="relative overflow-hidden"
+    >
+      <CustomCursor />
+      <ParticleField />
+      <Navigation isDark={isDark} toggleTheme={toggleTheme} />
+      
+      <main className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ContactSection />
+      </main>
+      
+      <Footer />
+    </motion.div>
   );
 };
 

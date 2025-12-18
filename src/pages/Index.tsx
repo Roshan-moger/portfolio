@@ -1,23 +1,22 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import CustomCursor from '@/components/CustomCursor';
-import ParticleField from '@/components/ParticleField';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import SkillsSection from '@/components/SkillsSection';
-import ExperienceSection from '@/components/ExperienceSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
-import LoadingScreen from '@/components/LoadingScreen';
+import MatrixRain from '@/components/cyberpunk/MatrixRain';
+import CyberCursor from '@/components/cyberpunk/CyberCursor';
+import CyberNav from '@/components/cyberpunk/CyberNav';
+import CyberHero from '@/components/cyberpunk/CyberHero';
+import CyberAbout from '@/components/cyberpunk/CyberAbout';
+import CyberSkills from '@/components/cyberpunk/CyberSkills';
+import CyberProjects from '@/components/cyberpunk/CyberProjects';
+import CyberExperience from '@/components/cyberpunk/CyberExperience';
+import CyberContact from '@/components/cyberpunk/CyberContact';
+import CyberFooter from '@/components/cyberpunk/CyberFooter';
+import CyberLoader from '@/components/cyberpunk/CyberLoader';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Set initial theme
     if (isDark) {
       document.documentElement.classList.remove('light');
     } else {
@@ -25,12 +24,10 @@ const Index = () => {
     }
   }, [isDark]);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+  const toggleTheme = () => setIsDark(!isDark);
 
   if (isLoading) {
-    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
+    return <CyberLoader onComplete={() => setIsLoading(false)} />;
   }
 
   return (
@@ -40,20 +37,27 @@ const Index = () => {
       transition={{ duration: 0.5 }}
       className="relative overflow-hidden"
     >
-      <CustomCursor />
-      <ParticleField />
-      <Navigation isDark={isDark} toggleTheme={toggleTheme} />
+      {/* Background Effects */}
+      <MatrixRain />
+      <div className="scanlines" />
       
+      {/* Custom Cursor */}
+      <CyberCursor />
+      
+      {/* Navigation */}
+      <CyberNav isDark={isDark} toggleTheme={toggleTheme} />
+      
+      {/* Main Content */}
       <main className="relative z-10">
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ContactSection />
+        <CyberHero />
+        <CyberAbout />
+        <CyberSkills />
+        <CyberProjects />
+        <CyberExperience />
+        <CyberContact />
       </main>
       
-      <Footer />
+      <CyberFooter />
     </motion.div>
   );
 };

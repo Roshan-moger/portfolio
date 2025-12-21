@@ -1,16 +1,26 @@
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
-import { Resend } from "resend"
+import nodemailer from "nodemailer"
 
 dotenv.config()
 
 const app = express()
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Middlewares
 app.use(cors())
 app.use(express.json())
+
+// Nodemailer transporter
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: false, // true for 465, false for 587
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
+})
 
 // Contact form API
 app.post("/api/contact", async(req, res) => {
@@ -21,10 +31,10 @@ app.post("/api/contact", async(req, res) => {
             return res.status(400).json({ error: "All fields are required" })
         }
 
-        const data = await resend.emails.send({
-            from: `Contact Form onboarding@resend.dev`,
+        const mailOptions = {
+            from: `"Contact Form" <${process.env.SMTP_USER}>`,
             to: "roshanmoger502@gmail.com",
-            replyTo: email, // ✅ correct key for Resend
+            replyTo: email,
             subject: `New Contact Form Message from ${name}`,
             html: `
         <h2>New Contact Form Submission</h2>
@@ -33,12 +43,13 @@ app.post("/api/contact", async(req, res) => {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, "<br>")}</p>
       `,
-        })
+        }
+
+        await transporter.sendMail(mailOptions)
 
         res.status(200).json({
             success: true,
             message: "Email sent successfully",
-            data,
         })
     } catch (error) {
         console.error("Email send error:", error)

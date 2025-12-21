@@ -139,14 +139,7 @@ const CyberLoader = ({ onComplete }: CyberLoaderProps) => {
             </motion.p>
           </div>
         </div>
-
-        {/* Corner Decorations */}
-        <div className="absolute top-4 left-4 font-mono text-xs text-primary/50">
-          {'<CYBER_PORTFOLIO>'}
-        </div>
-        <div className="absolute bottom-4 right-4 font-mono text-xs text-primary/50">
-          {'</CYBER_PORTFOLIO>'}
-        </div>
+      
       </motion.div>
     </AnimatePresence>
   );

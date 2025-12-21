@@ -84,7 +84,7 @@
     }
     body {
         @apply bg-background text-foreground font-sans antialiased;
-        font-family: 'Outfit', sans-serif;
+        font-family: 'Inter', system-ui, sans-serif;
     }
      ::selection {
         background: hsl(var(--primary) / 0.3);

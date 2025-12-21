@@ -14,7 +14,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-32 relative" ref={ref}>
+    <section id="about" className="py-16 relative" ref={ref}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -22,11 +22,12 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-mono text-sm mb-4 block">{'// About Me'}</span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+ <span className="text-primary text-sm font-medium tracking-wider uppercase">
+            About Me
+          </span>          <h2 className="text-3xl sm:text-4xl font-bold mt-4">
             Crafting <span className="gradient-text">Digital</span> Experiences
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base">
             Transforming complex problems into elegant, user-centric solutions
           </p>
         </motion.div>
@@ -41,23 +42,26 @@ const AboutSection = () => {
           >
             <div className="glass-card p-8 rounded-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
-              
-              <h3 className="text-2xl font-semibold mb-4 gradient-text">My Journey</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                As a Frontend Developer at Excelsoft Technologies, I specialize in building 
-                enterprise-scale Single Page Applications using React.js. My passion lies in 
-                creating seamless, interactive user experiences that make a difference.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                I've contributed to EdTech platforms serving thousands of users, developed 
-                shared component libraries for consistent UIs across teams, and implemented 
-                real-time features using WebSockets.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                From secure JWT authentication to complex state management with Redux Toolkit,
-                I thrive on solving challenging technical problems while keeping the user 
-                experience at the forefront.
-              </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I'm a passionate Frontend Developer with over 2 years of experience 
+              crafting intuitive and performant web applications. My expertise lies 
+              in building scalable solutions using <span className="text-foreground font-medium">React.js</span>, 
+              <span className="text-foreground font-medium"> Redux Toolkit</span>, and 
+              <span className="text-foreground font-medium"> Tailwind CSS</span>.
+            </p>
+            
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I've worked extensively in <span className="text-foreground font-medium">EdTech</span> and 
+              <span className="text-foreground font-medium"> Event Management</span> domains, 
+              developing component libraries, authentication systems, and real-time 
+              collaborative features.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              My focus is on delivering enterprise-grade user interfaces that 
+              combine exceptional user experience with clean, maintainable code 
+              architecture.
+            </p>
             </div>
 
             {/* Education Card */}

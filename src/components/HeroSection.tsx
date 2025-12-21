@@ -9,12 +9,19 @@ const HeroSection = () => {
     }
   };
 
-  const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleDownloadResume = () => {
+    // Create a temporary link to download
+    // In production, this would link to an actual PDF file
+    const resumeUrl = "/Roshan_Moger_frontend_developer.pdf";
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = "Roshan_Moger_Resume.pdf";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
+
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -165,12 +172,12 @@ const HeroSection = () => {
               />
             </motion.button>
             <motion.button
-              onClick={scrollToContact}
+              onClick={handleDownloadResume}
               className="px-8 py-4 rounded-full font-medium glass-card border border-border/50 hover:border-primary/50 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Contact Me
+              Download Resume
             </motion.button>
           </motion.div>
         </div>

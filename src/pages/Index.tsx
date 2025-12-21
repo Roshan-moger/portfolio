@@ -2,17 +2,16 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import CyberLoader from '@/components/cyberpunk/CyberLoader';
 import ParticleField from '@/components/ParticleField';
-import CyberNav from '@/components/cyberpunk/CyberNav';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ExperienceSection from '@/components/ExperienceSection';
-import CyberContact from '@/components/cyberpunk/CyberContact';
-import CyberSkills from '@/components/cyberpunk/CyberSkills';
 import CustomCursor from '@/components/CustomCursor';
 import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
-
+import { GameSection } from '@/components/GameSection';
+import SkillsSection from '@/components/SkillsSection';
+import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +40,7 @@ const Index = () => {
     >
       {/* Background Effects */}
       <ParticleField />
+
       <div className="scanlines" />
       
       {/* Custom Cursor */}
@@ -53,10 +53,11 @@ const Index = () => {
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />
-        <CyberSkills />
-        <ProjectsSection />
         <ExperienceSection />
-        <CyberContact />
+                <ProjectsSection />
+  <GameSection />
+        <SkillsSection />
+        <ContactSection />
       </main>
       
       <Footer />

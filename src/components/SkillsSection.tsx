@@ -1,157 +1,195 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+"use client"
 
-interface Skill {
-  name: string;
-  level: number;
-  color: string;
-  icon: string;
-}
+import type React from "react"
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import {
+  Code2,
+  Palette,
+  Repeat,
+  Plug,
+  Radio,
+  GitBranch,
+  Server,
+  Database,
+  Leaf,
+  Lock,
+  MonitorPlay,
+  FigmaIcon,
+  FileCode2,
+  Braces,
+  Atom,
+  FileText,
+  Paintbrush,
+  Send,
+  Boxes,
+  Bot,
+  Triangle,
+  Globe,
+  Cpu,
+  Layers,
+  Network,
+  Terminal,
+} from "lucide-react"
 
-const skills: Skill[] = [
-  { name: 'React.js', level: 95, color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
-  { name: 'TypeScript', level: 88, color: 'from-blue-400 to-indigo-500', icon: '📘' },
-  { name: 'JavaScript', level: 92, color: 'from-yellow-400 to-orange-500', icon: '🟨' },
-  { name: 'Tailwind CSS', level: 90, color: 'from-teal-400 to-cyan-500', icon: '🎨' },
-  { name: 'Redux Toolkit', level: 85, color: 'from-purple-400 to-violet-500', icon: '🔄' },
-  { name: 'REST APIs', level: 88, color: 'from-green-400 to-emerald-500', icon: '🔗' },
-  { name: 'WebSocket', level: 80, color: 'from-pink-400 to-rose-500', icon: '📡' },
-  { name: 'Git/GitHub', level: 85, color: 'from-gray-400 to-zinc-500', icon: '🔀' },
-];
 
-const tools = [
-  { name: 'React.js', icon: '⚛️' },
-  { name: 'TypeScript', icon: '📘' },
-  { name: 'Node.js', icon: '🟢' },
-  { name: 'MongoDB', icon: '🍃' },
-  { name: 'MySQL', icon: '🐬' },
-  { name: 'Tailwind', icon: '🎨' },
-  { name: 'Redux', icon: '🔄' },
-  { name: 'JWT', icon: '🔐' },
-  { name: 'WebSocket', icon: '📡' },
-  { name: 'VS Code', icon: '💻' },
-  { name: 'Git', icon: '🔀' },
-  { name: 'Figma', icon: '🎭' },
-];
 
-const SkillsSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+/* -------------------- DATA -------------------- */
+const coreSkills=  [
+  { name: "React.js",  icon: Code2 },
+  { name: "TypeScript", icon: Braces },
+  { name: "JavaScript",  icon: FileCode2 },
+  { name: "Tailwind CSS", icon: Palette },
+  { name: "Redux",  icon: Repeat },
+  { name: "Bootstrap", icon: Palette },
+  { name: "Java (Core)", icon: Terminal },
+  { name: "Java Spring Boot (MVC)", icon: Layers },
+  { name: "Node.js", icon: Cpu },
+  { name: "Express.js", icon: Network },
+  { name: "REST APIs", icon: Boxes },
+  { name: "Databases", icon: Database },
+]
+
+const techStack = [
+
+  { name: "Redux Toolkit", icon: Repeat },
+  { name: "Node", icon: Server },
+  { name: "Git & GitHub", icon: GitBranch },
+  { name: "MongoDB", icon: Leaf },
+  { name: "PostgrelSQL", icon: Database },
+  { name: "HTML5", icon: FileText },
+  { name: "CSS3", icon: Paintbrush },
+  { name: "VS Code", icon: MonitorPlay },
+  { name: "Postman", icon: Send   }, 
+  { name: "Eclipse", icon: Boxes },
+  { name: "ChatGPT", icon: Bot },
+  { name: "Vercel", icon: Triangle },
+  { name: "Netlify", icon: Globe },
+
+]
+const additionalExpertise = [
+  "JWT Authentication",
+  "Protected Routes",
+  "Role-Based Access Control (RBAC)",
+  "Accessibility",
+  "Custom Hooks",
+  "Higher-Order Components (HOCs)",
+  "React Shared Component Implementation",
+  "WebSockets",
+  "Real-time Features",
+  "Responsive Design",
+  "Proctoring Systems",
+  "Agile / SDLC",
+  "EdTech Platforms",
+  "Event Management",
+]
+
+
+/* -------------------- COMPONENT -------------------- */
+export default function SkillsSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="skills" className="py-32 relative" ref={ref}>
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-10"
-          style={{ background: 'var(--gradient-primary)' }}
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-        />
-      </div>
+    <section id="skills" ref={ref} className="py-16">
+      <div className="container mx-auto px-6">
 
-      <div className="container mx-auto px-6 relative">
+        {/* -------------------- HEADER -------------------- */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          <span className="text-primary font-mono text-sm mb-4 block">{'// Technical Skills'}</span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Technologies I <span className="gradient-text">Master</span>
+          <span className="text-primary text-sm font-medium uppercase tracking-wider">
+            Skills & Tools
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-4">
+            What I Work With
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Constantly learning and evolving with the latest tech stack
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Technologies and tools I use to build scalable, production-ready applications
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Skill Bars */}
-          <div className="space-y-6">
-            <motion.h3
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              className="text-xl font-semibold mb-8"
-            >
-              Core Proficiencies
-            </motion.h3>
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: -50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">{skill.icon}</span>
-                    <span className="font-medium">{skill.name}</span>
-                  </div>
-                  <span className="text-muted-foreground text-sm">{skill.level}%</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
+        {/* -------------------- CORE + TECH -------------------- */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-24">
+
+          {/* Core Skills */}
+          <div>
+            <h3 className="text-xl font-semibold mb-8">
+              Core Coding Skills
+            </h3>
+
+            <div className="grid grid-cols-2 gap-4">
+              {coreSkills.map((skill, index) => {
+                const Icon = skill.icon!
+                return (
                   <motion.div
-                    className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
-                    initial={{ width: 0 }}
-                    animate={isInView ? { width: `${skill.level}%` } : {}}
-                    transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                  />
-                </div>
-              </motion.div>
-            ))}
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: index * 0.06 }}
+                    className="flex items-center shadow-sm gap-4 p-4 rounded-xl border bg-card hover:bg-muted/40 transition"
+                  >
+                    <Icon className="w-5 h-5 text-primary" />
+                    <span className="font-medium">{skill.name}</span>
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
 
-          {/* Floating Tech Icons */}
-          <div className="relative">
-            <motion.h3
-              initial={{ opacity: 0, x: 20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              className="text-xl font-semibold mb-8"
-            >
+          {/* Tech Stack */}
+          <div>
+            <h3 className="text-xl font-semibold mb-8">
               Tech Stack
-            </motion.h3>
+            </h3>
+
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
-              {tools.map((tool, index) => (
-                <motion.div
-                  key={tool.name}
-                  initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-                  animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.3 + index * 0.05,
-                    type: "spring",
-                    stiffness: 200,
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    y: -5,
-                    boxShadow: "0 10px 40px rgba(0, 217, 255, 0.2)",
-                  }}
-                  className="glass-card p-4 rounded-xl text-center cursor-default group"
-                >
-                  <motion.span
-                    className="text-3xl block mb-2"
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+              {techStack.map((tool, index) => {
+                const Icon = tool.icon!
+                return (
+                  <motion.div
+                    key={tool.name}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.15 + index * 0.05 }}
+                    className="flex flex-col shadow-sm items-center justify-center gap-2 p-4 rounded-xl border bg-card"
                   >
-                    {tool.icon}
-                  </motion.span>
-                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                    {tool.name}
-                  </span>
-                </motion.div>
-              ))}
+                    <Icon className="w-6 h-6 text-muted-foreground" />
+                    <span className="text-sm">{tool.name}</span>
+                  </motion.div>
+                )
+              })}
             </div>
           </div>
         </div>
+
+        {/* -------------------- ADDITIONAL EXPERTISE -------------------- */}
+        <div className="p-2">
+          <h3 className="text-xl font-semibold mb-6 text-center">
+            Additional Expertise
+          </h3>
+
+          <div className="flex flex-wrap justify-center gap-3">
+            {additionalExpertise.map((skill, index) => (
+              <motion.span
+                key={skill}
+                className="px-4 py-2 shadow-md rounded-full border text-sm text-muted-foreground hover:text-primary transition cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
-  );
-};
-
-export default SkillsSection;
+  )
+}

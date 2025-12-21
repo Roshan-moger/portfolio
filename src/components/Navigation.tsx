@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 interface NavigationProps {
   isDark: boolean;
@@ -8,12 +8,12 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
@@ -24,14 +24,14 @@ const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
   };
@@ -43,13 +43,16 @@ const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'glass-card py-3' : 'py-6'
+          isScrolled ? "glass-card py-3" : "py-6"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <motion.a
             href="#hero"
-            onClick={(e) => { e.preventDefault(); scrollToSection('#hero'); }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#hero");
+            }}
             className="text-2xl font-bold gradient-text cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -63,7 +66,10 @@ const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium relative group"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -120,7 +126,10 @@ const Navigation = ({ isDark, toggleTheme }: NavigationProps) => {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
                   className="text-2xl font-medium text-foreground hover:text-primary transition-colors"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}

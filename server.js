@@ -7,29 +7,52 @@ dotenv.config()
 
 const app = express()
 
-// Middlewares
 app.use(cors())
 app.use(express.json())
+
+console.log("📦 ENV CHECK")
+console.log("SMTP_HOST:", process.env.SMTP_HOST)
+console.log("SMTP_PORT:", process.env.SMTP_PORT)
+console.log("SMTP_USER:", process.env.SMTP_USER)
+console.log("SMTP_PASS:", process.env.SMTP_PASS ? "✔️ Loaded" : "❌ Missing")
 
 // Nodemailer transporter
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: false, // true for 465, false for 587
+    port: Number(process.env.SMTP_PORT),
+    secure: false,
     auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
     },
 })
 
-// Contact form API
+// Verify SMTP connection
+transporter.verify((error, success) => {
+    if (error) {
+        console.error("❌ SMTP VERIFY FAILED:", error.message)
+    } else {
+        console.log("✅ SMTP SERVER READY")
+    }
+})
+
+// Contact form API with logs
 app.post("/api/contact", async(req, res) => {
+    console.log("\n📨 /api/contact CALLED")
+    console.log("➡️ Request body:", req.body)
+
     try {
         const { name, email, message } = req.body
 
+        // Validation logs
         if (!name || !email || !message) {
+            console.warn("⚠️ Validation failed")
             return res.status(400).json({ error: "All fields are required" })
         }
+
+        console.log("✅ Validation passed")
+        console.log("👤 Name:", name)
+        console.log("📧 User Email:", email)
 
         const mailOptions = {
             from: `"Contact Form" <${process.env.SMTP_USER}>`,
@@ -45,15 +68,28 @@ app.post("/api/contact", async(req, res) => {
       `,
         }
 
-        await transporter.sendMail(mailOptions)
+        console.log("📤 Sending email...")
+
+        const info = await transporter.sendMail(mailOptions)
+
+        console.log("✅ EMAIL SENT SUCCESSFULLY")
+        console.log("📨 Message ID:", info.messageId)
+        console.log("📬 Response:", info.response)
 
         res.status(200).json({
             success: true,
             message: "Email sent successfully",
+            messageId: info.messageId,
         })
     } catch (error) {
-        console.error("Email send error:", error)
-        res.status(500).json({ error: "Failed to send email" })
+        console.error("❌ EMAIL SEND ERROR")
+        console.error("Error message:", error.message)
+        console.error(error)
+
+        res.status(500).json({
+            success: false,
+            error: error.message,
+        })
     }
 })
 

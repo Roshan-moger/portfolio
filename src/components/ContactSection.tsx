@@ -27,29 +27,58 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
     setIsSubmitting(true)
     setError(null)
+    setIsSubmitted(false)
+
+    console.log("📤 Submitting contact form:", formState)
 
     try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000) // 10s timeout
+
       const response = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formState),
+        signal: controller.signal,
       })
 
-      if (!response.ok) {
-        throw new Error("Failed to send email")
+      clearTimeout(timeoutId)
+
+      let data: any = {}
+      try {
+        data = await response.json()
+      } catch {
+        // response might be empty
       }
 
+      console.log("📩 API Response:", response.status, data)
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Failed to send email")
+      }
+
+      // ✅ Success
       setIsSubmitted(true)
       setFormState({ name: "", email: "", message: "" })
 
-      setTimeout(() => setIsSubmitted(false), 3000)
-    } catch (err) {
-      setError("Failed to send message. Please try again.")
-      console.error("Error:", err)
+      console.log("✅ Email sent successfully")
+
+      setTimeout(() => {
+        setIsSubmitted(false)
+      }, 3000)
+    } catch (err: any) {
+      console.error("❌ Contact form error:", err)
+
+      if (err.name === "AbortError") {
+        setError("Request timed out. Please try again.")
+      } else {
+        setError(err.message || "Failed to send message. Please try again.")
+      }
     } finally {
       setIsSubmitting(false)
     }

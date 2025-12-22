@@ -6,7 +6,8 @@ import carRentImage from "../../public/car_rent.gif";
 import expenseTracker from "../../public/expense_tracker.gif";
 import portFolio from "../../public/Harish_portFolio.gif";
 import eventManage from "../../public/Event.gif";
-import { BasketballSlingshotGame } from "./BasketballSlingshotGame";
+import quiz from "../../public/quiz.gif"
+
 
 interface Project {
   id: number;
@@ -75,7 +76,19 @@ const projects: Project[] = [
       github: "https://github.com/Roshan-moger",
       demo: "https://harishmoger.netlify.app/",
     },
-  },
+  }, {
+    id: 5,
+    title: "Quiz App",
+    description:
+      "An interactive and responsive quiz application designed for  students, featuring topic-wise quizzes in Python, Java, and Aptitude. The app provides a smooth user experience with real-time question navigation, score tracking, and a clean, modern UI.",
+    image: quiz,
+    tech: ["React JS", "Tailwind CSS", "Axios"],
+    category: "Front End",
+    links: {
+      github: "https://github.com/Roshan-moger",
+      demo: "https://quiz-app-seven-phi-63.vercel.app",
+    },
+  }
 ];
 
 

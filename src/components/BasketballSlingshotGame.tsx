@@ -603,29 +603,29 @@ export function BasketballSlingshotGame() {
     }
     
     // Draw trajectory preview
-    if (isDragging) {
-      const points = getTrajectoryPoints();
-      ctx.strokeStyle = isDarkMode ? "rgba(0, 255, 200, 0.5)" : "rgba(255, 100, 0, 0.6)";
-      ctx.lineWidth = 2;
-      ctx.setLineDash([2, 2]);
+    // if (isDragging) {
+    //   const points = getTrajectoryPoints();
+    //   ctx.strokeStyle = isDarkMode ? "rgba(4, 5, 5, 0.5)" : "rgba(255, 100, 0, 0.6)";
+    //   ctx.lineWidth = 2;
+    //   ctx.setLineDash([2, 2]);
       
-      ctx.beginPath();
-      points.forEach((point, i) => {
-        if (i === 0) ctx.moveTo(point.x, point.y);
-        else ctx.lineTo(point.x, point.y);
-      });
-      ctx.stroke();
-      ctx.setLineDash([]);
+    //   ctx.beginPath();
+    //   points.forEach((point, i) => {
+    //     if (i === 0) ctx.moveTo(point.x, point.y);
+    //     else ctx.lineTo(point.x, point.y);
+    //   });
+    //   ctx.stroke();
+    //   ctx.setLineDash([]);
       
-      ctx.fillStyle = isDarkMode ? "rgba(0, 255, 200, 0.7)" : "rgba(255, 100, 0, 0.8)";
-      points.forEach((point, i) => {
-        if (i % 4 === 0) {
-          ctx.beginPath();
-          ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      });
-    }
+    //   ctx.fillStyle = isDarkMode ? "rgba(0, 255, 200, 0.7)" : "rgba(255, 100, 0, 0.8)";
+    //   points.forEach((point, i) => {
+    //     if (i % 4 === 0) {
+    //       ctx.beginPath();
+    //       ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+    //       ctx.fill();
+    //     }
+    //   });
+    // }
     
     // Draw backboard with 3D effect
     ctx.save();
@@ -760,7 +760,7 @@ export function BasketballSlingshotGame() {
     ctx.fillText(`Score: ${gameState.score}`, 25, 40);
     ctx.restore();
     
-  }, [ball, isDragging, dragEnd, isFlying, gameState.score, getTrajectoryPoints, isDarkMode]);
+  }, [ball, isDragging, dragEnd, isFlying, gameState.score, isDarkMode]);
 
   return (
     <div className="relative">

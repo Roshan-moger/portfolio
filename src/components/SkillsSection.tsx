@@ -155,10 +155,9 @@ export default function SkillsSection() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.15 + index * 0.05 }}
-                    className="flex flex-col shadow-sm items-center justify-center gap-2 p-4 rounded-xl border bg-card"
-                  >
+                    className="flex flex-col shadow-sm items-center text-center justify-center gap-2 p-4 rounded-xl border bg-card">
                     <Icon className="w-6 h-6 text-muted-foreground" />
-                    <span className="text-sm">{tool.name}</span>
+                    <span className="text-sm text-center">{tool.name}</span>
                   </motion.div>
                 )
               })}

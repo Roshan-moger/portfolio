@@ -153,6 +153,78 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-16 max-w-5xl mx-auto">
           {/* Contact Form */}
+
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="space-y-8"
+          >
+            {/* Info Card */}
+            <div className="glass-card p-8 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
+              <h3 className="text-xl font-semibold mb-6">
+                Contact Information
+              </h3>
+
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <motion.a
+                    key={info.label}
+                    href={info.href}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-muted/40 border border-border/50 shadow-sm hover:bg-muted/70 transition-all group"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                  >
+                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20">
+                      <info.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">
+                        {info.label}
+                      </p>
+                      <p className="font-medium">{info.value}</p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            {/* Social */}
+            <div className="glass-card p-8 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
+              <h3 className="text-xl font-semibold mb-6">Follow Me</h3>
+
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-3 p-4 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all"
+                  >
+                    <social.icon className="w-5 h-5 text-muted-foreground" />
+                    <span className="font-medium">{social.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Availability */}
+            <div className="glass-card p-6 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
+              <div className="flex items-center gap-3">
+                <motion.div
+                  className="w-3 h-3 rounded-full bg-green-500"
+                  animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="text-muted-foreground">
+                  Currently available for freelance projects
+                </span>
+              </div>
+            </div>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -244,77 +316,7 @@ const ContactSection = () => {
             </form>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-8"
-          >
-            {/* Info Card */}
-            <div className="glass-card p-8 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
-              <h3 className="text-xl font-semibold mb-6">
-                Contact Information
-              </h3>
 
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <motion.a
-                    key={info.label}
-                    href={info.href}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-muted/40 border border-border/50 shadow-sm hover:bg-muted/70 transition-all group"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                  >
-                    <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20">
-                      <info.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">
-                        {info.label}
-                      </p>
-                      <p className="font-medium">{info.value}</p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-
-            {/* Social */}
-            <div className="glass-card p-8 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
-              <h3 className="text-xl font-semibold mb-6">Follow Me</h3>
-
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-3 p-4 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all"
-                  >
-                    <social.icon className="w-5 h-5 text-muted-foreground" />
-                    <span className="font-medium">{social.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Availability */}
-            <div className="glass-card p-6 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
-              <div className="flex items-center gap-3">
-                <motion.div
-                  className="w-3 h-3 rounded-full bg-green-500"
-                  animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <span className="text-muted-foreground">
-                  Currently available for freelance projects
-                </span>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

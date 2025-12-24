@@ -210,8 +210,6 @@ const ContactSection = () => {
                 ))}
               </div>
             </div>
-
-            {/* Availability */}
             <div className="glass-card p-6 rounded-2xl border border-border/60 shadow-md shadow-black/5 dark:shadow-none">
               <div className="flex items-center gap-3">
                 <motion.div

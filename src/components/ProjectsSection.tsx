@@ -33,7 +33,7 @@ const projects: Project[] = [
     tech: ["React.js", "PWA", "QR Code" , "Scanning", "Redux", "JWT", "Map Integration", "Seat Booking"],
     category: "Front End",
     links: {
-      github: "https://github.com/Roshan-moger",
+      github: "https://github.com/Roshan-moger/booking-event",
       demo: "https://spotfront.app.codevicesolution.in/",
     },
   },
@@ -47,7 +47,7 @@ const projects: Project[] = [
     tech: ["MongoDB", "Express", "React.js", "Node.js", "IMAP" , "Redux Toolkit" , "JWT"],
     category: "Full Stack",
     links: {
-      github: "https://github.com/Roshan-moger",
+      github: "https://github.com/Roshan-moger/track-expense",
       demo: "https://spendvault.netlify.app/",
     },
   },
@@ -60,7 +60,7 @@ const projects: Project[] = [
     tech: ["React.js", "Tailwind CSS"],
     category: "Front End",
     links: {
-      github: "https://github.com/Roshan-moger",
+      github: "https://github.com/Roshan-moger/Car-rent",
       demo: "https://roshan-car-rent-app.netlify.app/",
     },
   },
@@ -73,7 +73,7 @@ const projects: Project[] = [
     tech: ["HTML", "CSS", "JavaScript"],
     category: "Front End",
     links: {
-      github: "https://github.com/Roshan-moger",
+      github: "https://github.com/Roshan-moger/Harish",
       demo: "https://harishmoger.netlify.app/",
     },
   }, {
@@ -85,7 +85,7 @@ const projects: Project[] = [
     tech: ["React JS", "Tailwind CSS", "Axios"],
     category: "Front End",
     links: {
-      github: "https://github.com/Roshan-moger",
+      github: "https://github.com/Roshan-moger/Quiz-App",
       demo: "https://quiz-app-seven-phi-63.vercel.app",
     },
   }

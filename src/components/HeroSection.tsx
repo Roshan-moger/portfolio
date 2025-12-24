@@ -131,7 +131,7 @@ const HeroSection = () => {
             {[
               { icon: Github, href: 'https://github.com/Roshan-moger', label: 'GitHub' },
               { icon: Linkedin, href: 'https://www.linkedin.com/in/roshan-moger', label: 'LinkedIn' },
-              { icon: Mail, href: 'mailto:contact@roshanmoger.dev', label: 'Email' },
+              { icon: Mail, href: 'mailto:roshanmoger502@gmail.com', label: 'Email' },
               { icon: Phone, href: 'tel:+918970035508', label: 'Phone' },
             ].map((social, index) => (
               <motion.a

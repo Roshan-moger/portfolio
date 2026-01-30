@@ -115,7 +115,7 @@ const ContactSection = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/roshan-moger",
+      href: "https://www.linkedin.com/in/roshan-moger-197700198/",
     },
   ]
 

@@ -116,7 +116,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              Frontend & MERN Stack Developer with 2+ years of experience building modern, scalable web applications.
+               MERN Stack  & Frontend Developer with 2+ years of experience building modern, scalable web applications.
               Experienced in React, Redux, Node.js, Express, and MongoDB, focused on creating high-performance
               user interfaces and full-stack solutions while crafting beautiful, interactive digital experiences.
             </motion.p>
